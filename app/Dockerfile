@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm init --y  && npm install express --save && npm i --S express pug && npm install mysql
+RUN npm init --y && npm install mysql --save  && npm install express --save && npm i --S express pug 
 
 ENV DOCKERIZE_VERSION v0.7.0
 
