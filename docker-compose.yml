@@ -2,17 +2,6 @@ version: "3.0"
 
 services:
 
-  app:
-    build: ./app
-    container_name: app
-    volumes:
-      - ./app:/usr/src/app
-    tty: true
-    networks:
-      - app-network
-    depends_on:
-      - db  
-
   db:
     image: mysql:5.7
     command: --innodb-use-native-aio=0
@@ -27,6 +16,19 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - app-network
+
+  app:
+    build: ./app
+    container_name: app
+    entrypoint: dockerize -wait tcp://db:3306  docker-entrypoint.sh
+    command: "node index.js"
+    volumes:
+      - ./app:/usr/src/app
+    tty: true
+    networks:
+      - app-network
+    depends_on:
+      - db  
 
   nginx:
     container_name: nginx
