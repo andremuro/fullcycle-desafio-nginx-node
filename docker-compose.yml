@@ -1,5 +1,9 @@
 version: "3.0"
 
+volumes:
+  mysql:
+    driver: local
+
 services:
 
   db:
@@ -9,7 +13,7 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
     ports:
       - "3306:3306"  
     environment:
