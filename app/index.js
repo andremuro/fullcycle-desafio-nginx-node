@@ -17,7 +17,7 @@ conn.connect((err) => {
     if (err) throw err
     console.log('Conectou Mysql')
 
-    var sql = "CREATE TABLE people (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL)"
+    var sql = "CREATE TABLE IF NOT EXISTS people (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL)"
     conn.query(sql, function (err, result) {
     if (err) throw err
     console.log("Tabela Criada com sucesso!")
