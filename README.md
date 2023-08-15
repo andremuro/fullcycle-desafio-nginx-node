@@ -18,7 +18,13 @@ __O retorno da aplicação node.js para o nginx deverá ser:__
 ```
 git clone https://github.com/andremuro/fullcycle-desafio-nginx-node.git
 
+Entrar na pasta do projeto:
+
 cd fullcycle-desafio-nginx-node
+
+Criar a pasta abaixo para o volume:
+
+mkdir mysql
 
 docker-compose up [-d]
 ```
